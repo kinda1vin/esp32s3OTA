@@ -10,8 +10,8 @@ const char * password = "rvm2tuam6a";
 String FirmwareVer = {
   "1.0"
 };
-#define URL_fw_Version "https://raw.githubusercontent.com/programmer131/ESP8266_ESP32_SelfUpdate/master/esp32_ota/bin_version.txt"
-#define URL_fw_Bin "https://raw.githubusercontent.com/programmer131/ESP8266_ESP32_SelfUpdate/master/esp32_ota/fw.bin"
+#define URL_fw_Version "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/bin_version.txt"
+#define URL_fw_Bin "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/fw.bin"
 
 void connect_wifi();
 void firmwareUpdate();
@@ -23,6 +23,10 @@ void setup() {
   Serial.print("Active firmware version:");
   Serial.println(FirmwareVer);
   connect_wifi();
+
+ if (FirmwareVersionCheck()) {
+      firmwareUpdate();
+    }
 
 }
 
@@ -65,6 +69,7 @@ void firmwareUpdate(void) {
     break;
   }
 }
+
 int FirmwareVersionCheck(void) {
   String payload;
   int httpCode;
