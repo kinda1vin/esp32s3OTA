@@ -8,7 +8,7 @@ const char * ssid = "SINGTEL-UK72";
 const char * password = "rvm2tuam6a";
 
 String FirmwareVer = {
-  "1.1"
+  "2.2"
 };
 
 #define URL_fw_Version "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/bin_version.txt"  // Corrected URL
@@ -29,11 +29,16 @@ void setup() {
       firmwareUpdate();
     }
 
+  for (int i = 0; i < 11; i++)
+  {
+    /* code */Serial.println("This is new version");
+  }
+  
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println("This is new version");
 
 }
 
