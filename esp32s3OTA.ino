@@ -8,9 +8,10 @@ const char * ssid = "SINGTEL-UK72";
 const char * password = "rvm2tuam6a";
 
 String FirmwareVer = {
-  "1.0"
+  "1.1"
 };
-#define URL_fw_Version "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/bin_version.txt"
+
+#define URL_fw_Version "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/bin_version.txt"  // Corrected URL
 #define URL_fw_Bin "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/fw.bin"
 
 void connect_wifi();
@@ -32,6 +33,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  Serial.println("This is new version");
 
 }
 
@@ -52,7 +54,7 @@ void connect_wifi() {
 
 void firmwareUpdate(void) {
   WiFiClientSecure client;
-  client.setCACert(rootCACertificate);
+  client.setInsecure();  // Temporarily ignore SSL verification
   t_httpUpdate_return ret = httpUpdate.update(client, URL_fw_Bin);
 
   switch (ret) {
@@ -82,7 +84,7 @@ int FirmwareVersionCheck(void) {
 
   if (client) 
   {
-    client -> setCACert(rootCACertificate);
+  client->setInsecure();  // Temporarily ignore SSL verification
 
     // Add a scoping block for HTTPClient https to make sure it is destroyed before WiFiClientSecure *client is 
     HTTPClient https;
