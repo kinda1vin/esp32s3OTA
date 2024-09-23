@@ -4,8 +4,8 @@
 #include <WiFiClientSecure.h>
 #include "cert.h"
 
-const char * ssid = "SINGTEL-UK72";
-const char * password = "rvm2tuam6a";
+const char * ssid = "alvin";
+const char * password = "12345678";
 
 String FirmwareVer = {
   "2.2"
@@ -25,10 +25,10 @@ void setup() {
   Serial.println(FirmwareVer);
   connect_wifi();
 
- if (FirmwareVersionCheck()) {
+ 
+if (FirmwareVersionCheck()) {
       firmwareUpdate();
     }
-
   for (int i = 0; i < 11; i++)
   {
     /* code */Serial.println("This is new version");
