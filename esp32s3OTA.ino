@@ -8,7 +8,7 @@ const char * ssid = "alvin";
 const char * password = "12345678";
 
 String FirmwareVer = {
-  "2.2"
+  "1.0"
 };
 
 #define URL_fw_Version "https://raw.githubusercontent.com/kinda1vin/esp32s3OTA/main/bin_version.txt"  // Corrected URL
@@ -25,13 +25,13 @@ void setup() {
   Serial.println(FirmwareVer);
   connect_wifi();
 
- 
-if (FirmwareVersionCheck()) {
+  if (FirmwareVersionCheck()) {
       firmwareUpdate();
     }
+    
   for (int i = 0; i < 11; i++)
   {
-    /* code */Serial.println("This is new version");
+    /* code */Serial.println("This is old version");
   }
   
 
